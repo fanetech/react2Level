@@ -4,11 +4,12 @@ import './navbar.css'
 
 const Header = () => {
     return (
-        <header>
+        <header className='pheader'>
             <ul>
                 <li><Link to={"/home"} >Accueil</Link></li>
                 <li><Link to={"/service"} >Services</Link></li>
                 <li><Link to={"/contact"} >Contact</Link></li>
+                <li><Link to={"/admin"} >&nbsp;Admin</Link></li>
             </ul>            
         </header>
     );

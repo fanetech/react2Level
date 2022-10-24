@@ -1,0 +1,5 @@
+export {default as Layout} from './Layout'
+export {default as Home} from './Home'
+export {default as Services} from './services'
+export {default as Contact} from './contact'
+export {default as Error} from '../../utils/Error'
