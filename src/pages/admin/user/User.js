@@ -6,9 +6,9 @@ const User = () => {
   const flag = useRef(false);
   useEffect(() => {
     if (flag.current === false) {
-      const data = userService.getAllUser();
-      console.log(data);
-      setUsers(data);
+      userService.getAllUser()
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
     }
 
     return () => flag.current = true

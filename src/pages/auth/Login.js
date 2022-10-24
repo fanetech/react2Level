@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import data from '../../fr.json';
 import { accountService } from '../../services/account.services';
+import Axios from '../../services/caller.services';
 
 const Login = () => {
     let navigate = useNavigate()    
     const [credentials, setCredentials] = useState({
-        email: 'root',
+        email: 'root@gmail.com',
         password: 'root'
     })
 
@@ -18,14 +19,14 @@ const Login = () => {
     }
     const onSubmit = (e) =>{
         e.preventDefault()
-        const user = data.user.find(user => user.email === credentials.email && user.password === credentials.password)
-        if(user){
-            accountService.saveToken(user.email)
+        Axios.post('/auth/login', credentials)
+        .then(res => {
+            accountService.saveToken(res.data.access_token)
             navigate('/admin')
-        }
-        else{
-            console.log("user no found")
-        }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
     }
     return (
         <form onSubmit={onSubmit}>

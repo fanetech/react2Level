@@ -1,9 +1,11 @@
+
 import data from '../fr.json'
+import Axios from './caller.services'
 const getAllUser = () => {
-    return data.user
+    return Axios.get('/users')
 }
 const getUser = (uid) => {
-    return data.user.find(user => user.id === uid)
+    return Axios.get('/users/'+uid)
 }
 
 export const userService = {

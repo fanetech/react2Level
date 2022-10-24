@@ -11,7 +11,12 @@ const isLogged = () => {
     return !!token
 }
 
+const getToken = () => {
+    return localStorage.getItem('token')
+}
+
 export const accountService = {
+    getToken,
     saveToken,
     logout,
     isLogged
