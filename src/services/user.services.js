@@ -1,14 +1,14 @@
-
-import data from '../fr.json'
-import Axios from './caller.services'
-const getAllUser = () => {
-    return Axios.get('/users')
-}
+import Axios from "./caller.services";
+const getAllUser = async () => {
+//   const {data} = await Axios.get("/users");
+//   console.log(data)
+  return Axios.get("/users");
+};
 const getUser = (uid) => {
-    return Axios.get('/users/'+uid)
-}
+  return Axios.get("/users/" + uid);
+};
 
 export const userService = {
-    getAllUser,
-    getUser
-}
+  getAllUser,
+  getUser,
+};

@@ -1,17 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useQuery } from "react-query";
 import { userService } from "../../../services/user.services";
 
 const User = () => {
-  const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([])
+  // const {isLoading, error, data } = useQuery("users", ()=> userService.getAllUser().then(res => res.data.data));
+  // const users = data || { 'data': [] }
+  // setUsers(data || { 'data': [] })
+  // setUsers(data || { 'data': [] });
   const flag = useRef(false);
   useEffect(() => {
     if (flag.current === false) {
-      userService.getAllUser()
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err))
+      userService
+        .getAllUser()
+        .then((res) => setUsers(res.data.data))
+        .catch((err) => console.log(err));
     }
 
-    return () => flag.current = true
+    return () => (flag.current = true);
   }, []);
   return (
     <div className="user">
@@ -24,7 +30,7 @@ const User = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {users?.map((user) => (
             <tr key={user.id}>
               <td> {user.id} </td>
               <td> {user.email} </td>
