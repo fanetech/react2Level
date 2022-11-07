@@ -1,7 +1,6 @@
 import Axios from "./caller.services";
-const getAllUser = async () => {
-  const {data} = await Axios.get("/users");
-  return data;
+const getAllUser = () => {
+  return Axios.get("/users");
 };
 const getUser = (uid) => {
   return Axios.get("/users/" + uid);

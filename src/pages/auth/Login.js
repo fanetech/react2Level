@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import data from '../../fr.json';
-import { accountService } from '../../services/account.services';
+import { accountService } from '../../services';
 import Axios from '../../services/caller.services';
 
 const Login = () => {
